@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Now</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        select,
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book now</h1>
+    <form action="#" method="post" id="form" action="https://script.google.com/macros/s/AKfycbz4DIyGBlYFN4hyStamnfKGGCd8zFDEBVCWwuPHs-oPydzgl2qupopQuzRRF3j9eFmAxA/exec">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="vehicle">Select Vehicle:</label>
+        <select id="vehicle" name="vehicle" required>
+            <option value="car">Car</option>
+            <option value="motorcycle">Motorcycle</option>
+            <option value="bicycle">Bicycle</option>
+            <option value="scooter">Scooter</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="vehicleName">Vehicle Name:</label>
+        <input type="text" id="vehicleName" name="vehicleName" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="pickupLocation">Pickup Location:</label>
+        <input type="text" id="pickupLocation" name="pickupLocation" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    let url = 'https://script.google.com/macros/s/AKfycbz4DIyGBlYFN4hyStamnfKGGCd8zFDEBVCWwuPHs-oPydzgl2qupopQuzRRF3j9eFmAxA/exec'
+    let form = document.querySelector('#form');
+    form.addEventListener("submit",(e)=>{
+        let d = new FormData(form);
+        e.preventDefault();
+        fetch(url,{
+            method:"POST",
+            body:d
+        }).then((res)=>res.text())
+        .then((finalRes)=>console.log(finalRes))
+
+    })
+</script>
+</html>
